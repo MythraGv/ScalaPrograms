@@ -109,7 +109,7 @@ def powxn(x : BigInt , n : Int): BigInt = {    
                                                              x*powxn(x,n-1)     
                                                           }     |
                                                  else     
-                                                         1/powxn(x,-n)     
+                                                         1/powxn(x,n)     
                                        }
 scala> powxn(2,4)
 //s41: BigInt = 16
