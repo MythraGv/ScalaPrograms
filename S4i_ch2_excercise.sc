@@ -77,3 +77,39 @@ scala> sumchar
 //res35: Long = 9415087488
 
 //7. Solve the preceing excercise without writing a loop.(HInt:Look at the StringOps Scaladoc.)
+scala> "Hello".foldLeft(1L)((x,y)=> x*y)
+//res36: Long = 9415087488
+
+//8.Write a function product(s:String) taht compute the product,as described in teh preceding excercises.
+scala> def product(s: String) = { s.foldLeft(1L)((x,y)=> x*y) }
+//product: (s: String)Long
+
+scala> product("Hello")
+//res38: Long = 9415087488
+
+//9. Make the function of the preceding excercise a recursive function.
+scala> def rprod(s:String):Long={      if(s.length ==0) 1 
+                                       else     
+                                       s(0) * rprod(s.drop(1))     
+                                }
+//rprod: (s: String)Long
+scala> rprod("Hello")
+//res40: Long = 9415087488
+//10.Write afunction that computes x pow n, where n is an integer. Use the folloing recursive defintion:
+// x pow n = y pow 2 if n is even and positive, where y = x pow n/2
+// x pow n = x * x pow n-1 if n is odd and positive .
+//x pow 0 = 1.
+// x pow n = 1/ x pow -n if n is negative 
+// Dont use a return statement.
+def powxn(x : BigInt , n : Int): BigInt = {    
+                                            if(n==0) 1     
+                                            else if (n>0) {     
+                                                          if(n%2==0) powxn(x,n/2) * powxn(x,n/2)     
+                                                          else     
+                                                             x*powxn(x,n-1)     
+                                                          }     |
+                                                 else     
+                                                         1/powxn(x,-n)     
+                                       }
+scala> powxn(2,4)
+//s41: BigInt = 16
